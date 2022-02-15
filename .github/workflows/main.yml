@@ -40,7 +40,7 @@ jobs:
       run: nuget restore $env:solutionFile
         
     - name: Build
-      run: msbuild $env:solutionFile /p:Configuration=$env:configuration /p:AppxBundlePlatforms=$env:platform /p:AppxBundle=Never /p:UapAppxPackageBuildMode=$env:package_build_mode /p:AppxPackageSigningEnabled=false /p:AppxPackageDir=${{ env.packageFolderPath }}
+      run: msbuild $env:solutionFile /p:Configuration=$env:configuration /p:AppxBundlePlatforms=$env:platform /p:AppxBundle=Never /p:UapAppxPackageBuildMode=$env:package_build_mode /p:AppxPackageSigningEnabled=false /p:AppxPackageDir=${{github.workspace}}\AppPackages
       env:
         configuration: Release
         platform: x64
@@ -52,5 +52,5 @@ jobs:
         # Artifact name
         name: MSIX
         # Directory containing files to upload
-        path: ${{ env.packageFolderPath }}
+        path: AppPackages
       
