@@ -9,7 +9,7 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
+  workflow_dispatch:
     
 env:
     solutionFile: .\windows\RNW_NuGet_CSharp.sln
