@@ -14,7 +14,7 @@ on:
 env:
     solutionFile: .\windows\RNW_NuGet_CSharp.sln
     manifestPath: .\windows\RNW_NuGet_CSharp\Package.appxmanifest
-    packageFolderPath: .\windows\AppPackages\
+    packageFolderPath: .\windows\RNW_NuGet_CSharp\AppPackages\
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,7 +40,7 @@ jobs:
       run: nuget restore $env:solutionFile
         
     - name: Build
-      run: msbuild $env:solutionFile /p:Configuration=$env:configuration /p:AppxBundlePlatforms=$env:platform /p:AppxBundle=Never /p:UapAppxPackageBuildMode=$env:package_build_mode /p:AppxPackageSigningEnabled=false
+      run: msbuild $env:solutionFile /p:Configuration=$env:configuration /p:AppxBundlePlatforms=$env:platform /p:AppxBundle=Never /p:UapAppxPackageBuildMode=$env:package_build_mode /p:AppxPackageSigningEnabled=false /p:AppxPackageDir=${{ env.packageFolderPath }}
       env:
         configuration: Release
         platform: x64
@@ -52,5 +52,5 @@ jobs:
         # Artifact name
         name: MSIX
         # Directory containing files to upload
-        path: ${{env.packageFolderPath}}
+        path: ${{ env.packageFolderPath }}
       
