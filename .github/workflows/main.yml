@@ -14,7 +14,6 @@ on:
 env:
     solutionFile: .\windows\RNW_NuGet_CSharp.sln
     manifestPath: .\windows\RNW_NuGet_CSharp\Package.appxmanifest
-    packageFolderPath: .\windows\RNW_NuGet_CSharp\AppPackages\
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
